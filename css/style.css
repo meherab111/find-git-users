@@ -1,0 +1,319 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Base Rule */
+
+* {
+  font-family: "Geist Mono", monospace;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--primary-color);
+}
+
+h1 {
+  text-transform: capitalize;
+  color: var(--font-color);
+}
+a {
+  font-size: 1.4rem;
+  color: var(--font-color);
+
+  &:hover {
+    cursor: pointer;
+    color: var(--secondary-color);
+  }
+}
+
+input {
+  height: 4rem;
+  width: 46rem;
+  font-size: 1.6rem;
+  outline: none;
+  text-transform: capitalize;
+  color: var(--font-color);
+  background-color: var(--inner-deep-color);
+  border-color: var(--secondary-color);
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  padding: 0.2rem 0.7rem 0.2rem 3rem;
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+
+  &:hover,
+  &:focus {
+    border-color: #80b6fd;
+    box-shadow: 0px 0px 100px 0px var(--outer-light-color);
+  }
+}
+
+/* Theme */
+
+:root {
+  --primary-color: #0d1117;
+  --secondary-color: #4493f8;
+  --font-color: #f0f6fc;
+
+  --outer-light-color: #3d444d;
+  --inner-deep-color: #19212c;
+}
+
+/* Layout */
+
+.container {
+  max-width: 136rem;
+  margin: 0 auto;
+  padding: 9.6rem 2.4rem;
+}
+
+.flex-box {
+  display: flex;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  justify-content: center;
+}
+
+.grid-two--column {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-three--column {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-four--column {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Reuseable */
+
+::placeholder {
+  color: var(--font-color);
+}
+
+.empty-msg {
+  font-size: 2.4rem;
+  text-align: center;
+}
+
+/*! Github Section */
+
+.github-section {
+  & .container.flex-box {
+    flex-direction: column;
+  }
+}
+
+/*! Search Input Box*/
+
+.search-input-outer-box {
+  align-items: center;
+  width: 48rem;
+  margin: 0 auto 8.6rem auto;
+  background-color: var(--outer-light-color);
+  padding: 0.4rem 0rem;
+  border-radius: 0.9rem;
+  -webkit-border-radius: 0.9rem;
+  -moz-border-radius: 0.9rem;
+  -ms-border-radius: 0.9rem;
+  -o-border-radius: 0.9rem;
+}
+
+.search-input-inner-box {
+  background-color: var(--inner-deep-color);
+  padding: 0.9rem 0.7rem;
+  border-radius: 0.9rem;
+  -webkit-border-radius: 0.9rem;
+  -moz-border-radius: 0.9rem;
+  -ms-border-radius: 0.9rem;
+  -o-border-radius: 0.9rem;
+}
+
+/*! Search form */
+
+#search-form {
+  position: relative;
+
+  & .left-icon {
+    position: absolute;
+    color: var(--font-color);
+    font-size: 2rem;
+    left: 7px;
+    top: 11px;
+  }
+}
+
+/*! Dynamic Output  */
+
+.dynamic-output.grid {
+  gap: 10rem;
+}
+
+.git-users-outer-box {
+  background-color: var(--outer-light-color);
+  padding: 0.5rem 0.5rem;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+
+  &:hover {
+    transform: translateY(-2rem);
+    -webkit-transform: translateY(-2rem);
+    -moz-transform: translateY(-2rem);
+    -ms-transform: translateY(-2rem);
+    -o-transform: translateY(-2rem);
+    box-shadow: 0px 48px 100px 0px var(--outer-light-color);
+  }
+}
+
+.git-users-inner-box {
+  background-color: var(--inner-deep-color);
+  padding: 1.5rem 1.5rem;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
+}
+
+.git-users-box.flex-box {
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+/*! Upper Part Info  */
+
+.upper-part-info.flex-box {
+  flex-direction: column;
+  gap: 2rem;
+  & img {
+    height: 21rem;
+    width: 21rem;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
+  }
+}
+
+
+/*! Lower Part Info  */
+
+.lower-part-info.flex-box {
+  align-items: center;
+  justify-content: space-between;
+
+  & .circle-user-img {
+    height: 4rem;
+    width: 4rem;
+    align-items: center;
+    background-color: var(--secondary-color);
+    border-radius: 3rem;
+    -webkit-border-radius: 3rem;
+    -moz-border-radius: 3rem;
+    -ms-border-radius: 3rem;
+    -o-border-radius: 3rem;
+
+    & img {
+      height: 3.5rem;
+      width: 3.5rem;
+      border-radius: 3rem;
+      -webkit-border-radius: 3rem;
+      -moz-border-radius: 3rem;
+      -ms-border-radius: 3rem;
+      -o-border-radius: 3rem;
+    }
+  }
+}
+
+/** Media Query  */
+
+@media (width <= 1330px) {
+  html {
+    font-size: 56.5%;
+  }
+  .container {
+    max-width: 46rem;
+  }
+
+  .dynamic-output{
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+
+@media (width <= 880px) {
+  html {
+    font-size: 54%;
+  }
+  
+input {
+  width: 34rem;
+  font-size: 1.5rem;
+}
+.search-input-outer-box {
+  width: 36rem;
+}
+
+  .container {
+    max-width: 46rem;
+  }
+
+  .dynamic-output{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (width <= 570px) {
+  input {
+    width: 29rem;
+    font-size: 1.5rem;
+  }
+  .search-input-outer-box {
+    width: 31.3rem;
+  }
+  .upper-part-info.flex-box {
+    gap: 2.4rem;
+    & img {
+      height: 29rem;
+      width: 29rem;
+    }
+  }
+  .container {
+    max-width: 36rem;
+  }
+
+  .dynamic-output.grid {
+    gap: 7rem;
+  }
+  .dynamic-output{
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+}
