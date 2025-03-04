@@ -3,7 +3,7 @@ const searchForm = document.getElementById("search-form");
 const userSearch = document.getElementById("user-search");
 const dynamicOutput = document.querySelector(".dynamic-output");
 const container = document.querySelector(".container");
-// reuseable fetch functionality
+// Reuseable Fetch Functionality
 const fetchFunctionality = async (url) => {
     const response = await fetch(url);
     if (!response.ok) {
@@ -12,7 +12,7 @@ const fetchFunctionality = async (url) => {
     const fetchedData = await response.json();
     return fetchedData;
 };
-// show final result function
+// Show Final Result Function
 const showResults = (element) => {
     const { login, avatar_url, url } = element;
     dynamicOutput.insertAdjacentHTML("beforeend", `<div class="git-users-outer-box">
@@ -37,14 +37,14 @@ const showResults = (element) => {
             </div>
       </div>`);
 };
-// define load function
+// Define Load Function
 const fetchUserData = async (url) => {
     const fetchedAllData = await fetchFunctionality(url);
     fetchedAllData.forEach((element) => {
         showResults(element);
     });
 };
-// call default load function
+// Call Default Load Function
 fetchUserData("https://api.github.com/users");
 // Implementing Debouncing
 const debounceFunc = (searchedResultShow, delay) => {
@@ -59,7 +59,7 @@ const debounceFunc = (searchedResultShow, delay) => {
     };
     return functionality;
 };
-// search functionality
+// Search Functionality
 const searchedResultShow = async (event) => {
     event.preventDefault();
     const userSearchedData = userSearch.value.toLowerCase();
@@ -87,5 +87,5 @@ const searchedResultShow = async (event) => {
         alert(error);
     }
 };
-const debounceImplemented = debounceFunc(searchedResultShow, 1000);
+const debounceImplemented = debounceFunc(searchedResultShow, 500);
 searchForm.addEventListener("keyup", debounceImplemented);
