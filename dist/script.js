@@ -46,8 +46,21 @@ const fetchUserData = async (url) => {
 };
 // call default load function
 fetchUserData("https://api.github.com/users");
+// Implementing Debouncing
+const debounceFunc = (searchedResultShow, delay) => {
+    let timer;
+    const functionality = (event) => {
+        if (timer) {
+            clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+            searchedResultShow(event);
+        }, delay);
+    };
+    return functionality;
+};
 // search functionality
-searchForm.addEventListener("keyup", async (event) => {
+const searchedResultShow = async (event) => {
     event.preventDefault();
     const userSearchedData = userSearch.value.toLowerCase();
     try {
@@ -73,4 +86,6 @@ searchForm.addEventListener("keyup", async (event) => {
     catch (error) {
         alert(error);
     }
-});
+};
+const debounceImplemented = debounceFunc(searchedResultShow, 1000);
+searchForm.addEventListener("keyup", debounceImplemented);

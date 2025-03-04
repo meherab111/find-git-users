@@ -6,7 +6,7 @@ const dynamicOutput = document.querySelector(".dynamic-output") as HTMLElement;
 
 const container = document.querySelector(".container") as HTMLElement;
 
-// set object's type
+// Set Object's Type
 
 interface gitUser {
   login: string;
@@ -16,7 +16,7 @@ interface gitUser {
   url: string;
 }
 
-// reuseable fetch functionality
+// Reuseable Fetch Functionality
 
 const fetchFunctionality = async <gen>(url: string): Promise<gen> => {
   const response = await fetch(url);
@@ -32,7 +32,7 @@ const fetchFunctionality = async <gen>(url: string): Promise<gen> => {
   return fetchedData;
 };
 
-// show final result function
+// Show Final Result Function
 
 const showResults = (element: gitUser) => {
   const { login, avatar_url, url } = element;
@@ -63,7 +63,7 @@ const showResults = (element: gitUser) => {
   );
 };
 
-// define load function
+// Define Load Function
 
 const fetchUserData = async (url: string) => {
   const fetchedAllData = await fetchFunctionality<gitUser[]>(url);
@@ -73,13 +73,30 @@ const fetchUserData = async (url: string) => {
   });
 };
 
-// call default load function
+// Call Default Load Function
 
 fetchUserData("https://api.github.com/users");
 
-// search functionality
+// Implementing Debouncing
 
-searchForm.addEventListener("keyup", async (event) => {
+const debounceFunc = (searchedResultShow: Function, delay: number) => {
+  let timer: number;
+  const functionality = (event: any) => {
+    if (timer) {
+      clearTimeout(timer);
+    }
+
+    timer = setTimeout(() => {
+      searchedResultShow(event);
+    }, delay);
+  };
+
+  return functionality;
+};
+
+// Search Functionality
+
+const searchedResultShow = async (event: any) => {
   event.preventDefault();
 
   const userSearchedData = userSearch.value.toLowerCase();
@@ -114,4 +131,8 @@ searchForm.addEventListener("keyup", async (event) => {
   } catch (error) {
     alert(error);
   }
-});
+};
+
+const debounceImplemented = debounceFunc(searchedResultShow, 500);
+
+searchForm.addEventListener("keyup", debounceImplemented);
